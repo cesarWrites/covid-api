@@ -25,3 +25,24 @@ export const fetchCasesForAll = async () => {
         console.error(error);
     });
 };
+
+export const fetchHistoryData = async () => {
+
+const options = {
+  method: 'GET',
+  url: 'https://covid-193.p.rapidapi.com/history',
+  params: {country: 'usa', day: '2020-06-02'},
+  headers: {
+    'X-RapidAPI-Key': '3d29842203msh762874f38de76fep195411jsnd6053eac3e1d',
+    'X-RapidAPI-Host': 'covid-193.p.rapidapi.com'
+  }
+};
+
+axios.request(options).then(function (response) {
+	console.log(response.data);
+}).catch(function (error) {
+	console.error(error);
+});
+};
+
+

@@ -6,12 +6,13 @@ import Chart from './components/Chart/Chart';
 import ShowCase from './components/Showcase/ShowCase';
 import Table from './components/table/DataTable';
 import Loader from './components/loader';
-import { fetchCasesForAll} from './API/api';
+import { fetchCasesForAll, fetchHistoryData} from './API/api';
 
 function App(){
   const [loading, setLoading] = useState(false);
 
   const [tableData, setTableData] = useState([]);
+  const [countryData, setCountryData] = useState([]);
 
   const [totalData, setTotalData] = useState({
     DataTransferItemList: 0,
@@ -40,6 +41,15 @@ function App(){
     });
   };
 
+
+  const getCountryData = async () => {
+    setLoading(true);
+    const result = await fetchHistoryData();
+    setTotalData({
+    });
+    setCountryData(true);
+    setLoading(false);
+  }
   return(
     <>
     {loading ? (
@@ -48,12 +58,10 @@ function App(){
       <>
         <Container maxWidth='xl'>
           <NavBar
-            
             getGlobalData={getGlobalData}
-           
+            getCountryData={getCountryData}
           />
           <ShowCase totalData={totalData} />
-          
           <Table tableData={tableData} setTotalData={setTotalData} />
         </Container>
       </>

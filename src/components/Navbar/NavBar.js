@@ -41,13 +41,6 @@ const NavBar = ({ getGlobalData }) => {
         <Typography variant='h6' className={classes.title}>
           Covid Tracker Application
         </Typography>
-        <Button
-          variant='contained'
-          style={{ backgroundColor: 'green', color: 'white' }}
-          onClick={getGlobalData}
-        >
-          {'Global'}
-        </Button>
       </Toolbar>
     </AppBar>
   );
